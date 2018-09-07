@@ -35,8 +35,9 @@ def get_images(json):
             title = item.get('title')
             images = item.get('image_list')
             for image in images:
+                image = re.sub("(.*?)pgc-image", "http://p9.pstatp.com/origin/pgc-image", image.get('url') )
                 yield {
-                    'image': 'https:' + image.get('url'),
+                    'image': image,
                     'title': title
                 }
 
